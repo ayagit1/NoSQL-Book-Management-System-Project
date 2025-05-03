@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Book</title>
+    <!-- Bootstrap + Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f0e6d6; /* Pastel Beige */
+            color: #6f6f6f; /* Medium-dark grey for text */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ff6b6b; /* Coral Pink */
+        }
+
+        .form-control:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .alert-success {
+            background-color: #80c7b2; /* Muted Teal */
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-success {
+            background-color: #ff6b6b; /* Coral Pink */
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #e55b5b; /* Darker Coral Pink */
+        }
+
+        .btn-link {
+            color: #6f6f6f;
+        }
+
+        /* Style for dropdown select */
+        .form-group select {
+            background-color: white;
+            font-size: 1rem;
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ff6b6b; /* Coral Pink */
+            width: 100%; /* Ensure it takes full width */
+            display: block; /* Makes it block-level */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-group select:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        }
+
+        .form-group select option {
+            padding: 10px;
+        }
+
+    </style>
+
+
+
+
+</head>
+<body>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1>➕ Add a New Book</h1>
+    </div>
+
+    <!-- Success Alert -->
+    <div th:if="${param.success}" class="alert alert-success text-center" role="alert">
+        ✅ Book added successfully!
+    </div>
+
+    <form th:action="@{/add}" th:object="${book}" method="post" class="p-4 bg-white rounded shadow-sm">
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title"><i class="fa fa-book"></i> Title</label>
+            <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="Enter book title" required minlength="2">
+        </div>
+
+        <!-- Author -->
+        <div class="form-group">
+            <label for="author"><i class="fa fa-user"></i> Author</label>
+            <input type="text" id="author" th:field="*{author}" class="form-control" placeholder="Enter author name" required minlength="2">
+        </div>
+
+        <!-- Genre (Dropdown) -->
+        <div class="form-group">
+            <label><i class="fa fa-tags"></i> Genre</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="fiction" name="genre" value="Fiction" th:field="*{genre}">
+                <label class="form-check-label" for="fiction">Fiction</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="nonFiction" name="genre" value="Non-Fiction" th:field="*{genre}">
+                <label class="form-check-label" for="nonFiction">Non-Fiction</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="scienceFiction" name="genre" value="Science Fiction" th:field="*{genre}">
+                <label class="form-check-label" for="scienceFiction">Science Fiction</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="fantasy" name="genre" value="Fantasy" th:field="*{genre}">
+                <label class="form-check-label" for="fantasy">Fantasy</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="biography" name="genre" value="Biography" th:field="*{genre}">
+                <label class="form-check-label" for="biography">Biography</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="history" name="genre" value="History" th:field="*{genre}">
+                <label class="form-check-label" for="history">History</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="romance" name="genre" value="Romance" th:field="*{genre}">
+                <label class="form-check-label" for="romance">Romance</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="thriller" name="genre" value="Thriller" th:field="*{genre}">
+                <label class="form-check-label" for="thriller">Thriller</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="adventure" name="genre" value="Adventure" th:field="*{genre}">
+                <label class="form-check-label" for="adventure">Adventure</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="drama" name="genre" value="Drama" th:field="*{genre}">
+                <label class="form-check-label" for="drama">Drama</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="poetry" name="genre" value="Poetry" th:field="*{genre}">
+                <label class="form-check-label" for="poetry">Poetry</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="classic" name="genre" value="Classic" th:field="*{genre}">
+                <label class="form-check-label" for="classic">Classic</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="children" name="genre" value="Children" th:field="*{genre}">
+                <label class="form-check-label" for="children">Children</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="horror" name="genre" value="Horror" th:field="*{genre}">
+                <label class="form-check-label" for="horror">Horror</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="selfHelp" name="genre" value="Self-Help" th:field="*{genre}">
+                <label class="form-check-label" for="selfHelp">Self-Help</label>
+            </div>
+            <!-- Additional missing genres from your list -->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="dystopian" name="genre" value="Dystopian" th:field="*{genre}">
+                <label class="form-check-label" for="dystopian">Dystopian</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="philosophicalFiction" name="genre" value="Philosophical Fiction" th:field="*{genre}">
+                <label class="form-check-label" for="philosophicalFiction">Philosophical Fiction</label>
+            </div>
+        </div>
+
+        <!-- Year -->
+        <div class="form-group">
+            <label for="year"><i class="fa fa-calendar"></i> Year</label>
+            <input type="number" id="year" th:field="*{year}" class="form-control" placeholder="Enter the publication year" required>
+        </div>
+
+
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description"><i class="fa fa-book"></i> Description</label>
+            <textarea id="description" th:field="*{description}" class="form-control" rows="4" placeholder="Enter a brief description of the book..." required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success btn-block">📚 Add Book</button>
+
+        <!-- Back to Home -->
+        <a href="/" class="btn btn-link btn-block">⬅ Back to Home</a>
+    </form>
+</div>
+
+<!-- JavaScript to pre-fill current year -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const yearInput = document.getElementById("year");
+        if (yearInput && (yearInput.value === "" || yearInput.value === "0")) {
+            yearInput.value = new Date().getFullYear();
+        }
+    });
+</script>
+</body>
+</html>
