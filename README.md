@@ -14,7 +14,6 @@ Welcome to the **NoSQL Book Management System** project! This is a web applicati
 5. [Project Structure](#project-structure)
 6. [Running the Application](#running-the-application)
 7. [Contributing](#contributing)
-8. [License](#license)
 
 ---
 
