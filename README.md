@@ -1,103 +1,163 @@
 # 📚 NoSQL Book Management System
 
+Welcome to the **NoSQL Book Management System** project! This is a web application designed to manage a collection of books. It allows users to browse books, search by title or author, view details, and even add ratings and comments. Built using **Spring Boot**, **MongoDB**, **Thymeleaf**, and **Bootstrap**, this application provides a robust and user-friendly interface for managing your book collection.
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Technologies Used](#technologies-used)
+3. [Key Features](#key-features)
+4. [Getting Started](#getting-started)
+
+   * [Prerequisites](#prerequisites)
+   * [Setup Instructions](#setup-instructions)
+5. [Project Structure](#project-structure)
+6. [Running the Application](#running-the-application)
+7. [Contributing](#contributing)
+8. [License](#license)
+
+---
+
 ## Overview
 
-This project presents a full-stack **Book Management System** built using **Spring Boot** for the backend, **Thymeleaf** for the frontend, and **MongoDB** as the NoSQL database. The system is designed to manage books and user interactions efficiently, leveraging the flexibility and scalability of document-oriented databases.
+The **NoSQL Book Management System** is a full-stack web application where users can:
 
-The project is a practical demonstration of how traditional Java enterprise development frameworks like Spring Boot can be integrated with modern NoSQL databases to create dynamic, scalable, and data-intensive web applications.
+* **View books** in a paginated list.
+* **Search** for books by title or author.
+* **View detailed information** about each book, including its description, ratings, and comments.
+* **Rate books** on a scale from 1 to 5.
+* **Add comments** to books for user feedback.
+* **Add, edit, and delete books** from the system.
 
-## Objectives
+The back-end is built with **Spring Boot** and connected to **MongoDB** (a NoSQL database) for storing book data. **Thymeleaf** handles dynamic content rendering, while **Bootstrap** ensures the interface is responsive and visually appealing.
 
-* To design and develop a web-based system that utilizes **MongoDB** for data storage.
-* To implement a complete **CRUD** interface for book and user management.
-* To build a responsive and dynamic user interface using **Thymeleaf**.
-* To apply **Spring Boot** and **Spring Data MongoDB** for clean, modular, and scalable architecture.
+---
 
 ## Technologies Used
 
-* **Java**, **Spring Boot**, **Spring Data MongoDB**
-* **MongoDB** – NoSQL database
-* **Thymeleaf** – Template engine for frontend rendering
-* **Maven** – Build tool
-* **Lombok** – Code generation (optional)
-* **Bootstrap/CSS** – For basic styling
+This project leverages the following technologies:
 
-## Functional Modules
+* **Spring Boot**: A Java framework that simplifies the creation of web applications. It handles the business logic and HTTP requests in this project.
+* **MongoDB**: A NoSQL database used to store book data. MongoDB's flexibility allows for easy scaling and fast access to large datasets.
+* **Thymeleaf**: A server-side Java template engine used to render HTML content dynamically, allowing us to create interactive user interfaces with minimal complexity.
+* **Bootstrap**: A popular CSS framework for building responsive, mobile-first web pages. It provides pre-built components that are easily customizable.
+* **FontAwesome**: A library of icons used throughout the project to enhance the UI, making it more user-friendly and visually engaging.
 
-* **Book Management**
+---
 
-  * Add, update, delete, and list books
-  * View detailed book information
-* **Search & Filtering**
+## Key Features
 
-  * Search by title, author, genre, etc.
-* **User Management**
+Here are the main features of the **NoSQL Book Management System**:
 
-  * Basic user simulation and borrowing behavior (if implemented)
-* **Thymeleaf-based Views**
+1. **Home Page with Pagination**:
 
-  * Dynamic HTML templates rendered on the server side
-* **MongoDB Integration**
+   * Displays a paginated list of books.
+   * Each book card includes essential details such as title, author, genre, and year.
 
-  * Flexible schema and fast querying using `@Document` and repository interfaces
+2. **Search by Title or Author**:
 
-## Project Structure
+   * Allows users to search for books by title or author, with results displayed in a paginated format.
 
-```
-src/
-├── main/
-│   ├── java/com/example/bookmanager/
-│   │   ├── controller/     # Web controllers (BookController, etc.)
-│   │   ├── model/          # Domain models (Book.java)
-│   │   ├── repository/     # MongoDB repositories
-│   │   └── BookManagerApplication.java  # Main app entry
-│   └── resources/
-│       ├── templates/      # Thymeleaf HTML templates
-│       ├── static/         # CSS/JS (if any)
-│       └── application.properties
-```
+3. **Book Details**:
 
-## Setup Instructions
+   * Shows detailed information about each book, including description, average rating, and a list of user comments.
 
-1. Clone the repository:
+4. **Add, Edit, and Delete Books**:
+
+   * Users can add new books, update existing ones, and delete books from the system.
+
+5. **Rate Books**:
+
+   * Users can rate books from 1 to 5, and the average rating is displayed.
+
+6. **Add Comments**:
+
+   * Users can leave comments on books to share their thoughts and feedback.
+
+7. **Responsive Design**:
+
+   * The app is mobile-friendly, thanks to Bootstrap, which automatically adjusts the layout for different screen sizes.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Before running this application, ensure you have the following installed on your machine:
+
+* **Java 17 or higher** (to run Spring Boot).
+* **MongoDB Atlas** account (or any other MongoDB instance).
+
+### Setup Instructions
+
+1. **Clone the repository**:
+   Clone the project repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/nosql-book-management.git
-   cd nosql-book-management
+   git clone https://github.com/your-username/no-sql-book-management-system.git
    ```
 
-2. Ensure MongoDB is running locally or update the URI in `application.properties`:
+2. **Navigate to the project directory**:
 
-   ```properties
-   spring.data.mongodb.uri=mongodb://localhost:27017/bookdb
+   ```bash
+   cd no-sql-book-management-system
    ```
 
-3. Build and run the application:
+3. **Set up MongoDB**:
+
+   * Create a MongoDB Atlas cluster if you don't have one already.
+   * Replace the connection URI in `src/main/resources/application.properties` with your own MongoDB URI:
+
+     ```properties
+     spring.data.mongodb.uri=mongodb+srv://<username>:<password>@cluster0.xjslic1.mongodb.net/bookdb?retryWrites=true&w=majority&appName=Cluster0
+     ```
+
+4. **Build the project**:
+   Use Maven to build the project:
+
+   ```bash
+   mvn clean install
+   ```
+
+5. **Run the application**:
+   Start the Spring Boot application:
 
    ```bash
    mvn spring-boot:run
    ```
 
-4. Access the application in your browser at:
+6. **Access the application**:
+   Open your web browser and go to `http://localhost:8080` to see the application in action.
 
-   ```
-   http://localhost:8080
-   ```
+---
 
-## Sample Endpoints & Views
+## Project Structure
 
-* `/books` – View all books
-* `/books/add` – Add new book (form)
-* `/books/edit/{id}` – Edit a book
-* `/books/delete/{id}` – Delete a book
-* `/books/search?title=xyz` – Search by title and Author
+Here's a quick breakdown of the project structure:
 
-## Academic Relevance
+* **/src/main/java/com/example/project**: Contains all the backend Java files, including controllers, services, and repositories.
+* **/src/main/resources/templates**: Contains Thymeleaf templates for the user interface (HTML files).
+* **/src/main/resources/static**: Contains static files such as CSS, images, and JavaScript.
+* **/src/main/resources/application.properties**: Contains configuration settings, including the MongoDB URI and Spring Boot settings.
 
-This project illustrates the application of **NoSQL database systems** in web development by integrating MongoDB into a Spring MVC architecture. It demonstrates practical usage of **Spring Boot**, **Spring Data MongoDB**, and **Thymeleaf**, combining backend logic with server-side HTML rendering — providing both conceptual depth and implementation skills for real-world enterprise systems.
+---
 
-## Author
+## Running the Application
 
-**Aya Amarass & Alex Huey** :
-Master 2 in Big Data & Business Analytics – CYTECH
-📧 [aya.amarass@gmail.com](mailto:aya.amarass@gmail.com)
+Once the application is running, visit `http://localhost:8080` to view the homepage. The homepage will display a list of books that you can interact with:
+
+* **Browse the books**: View a paginated list of books with their title, author, genre, and publication year.
+* **Search for books**: Use the search bar to find books by title or author.
+* **Add, edit, or delete books**: Use the buttons provided to manage books in the system.
+* **Rate books**: You can give books a rating between 1 and 5.
+* **Add comments**: Share your thoughts on books by adding comments.
+
+---
+
+## Contributions
+
+This project was developed by **Aya Amarass** and **Alex Huey** as part of the NoSQL Class of the Master 2 in Big Data & Business Analytics at CYTECH - CY CERGY PARIS UNIVERSITY. If you have any suggestions or improvements, feel free to create an issue or a pull request.
+
+---
+This README provides all the essential information for anyone who wants to understand, use, or contribute to your project. Make sure to replace placeholders (like repository URL and MongoDB URI) with the actual details of your project.
